@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { EnrollmentProvider } from "./context/context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,27 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main className="flex flex-col min-h-screen bg-gray-100">
+        <div className="border-b border-gray-300 flex items-center justify-between fixed top-0 h-20 bg-white w-full">
+          <div className="text-4xl" style={{marginLeft: '1rem'}} >
+            <a href='/'>Cartedo</a>
+          </div>
+          <div className="" style={{marginRight: '1rem'}}>
+            Login details
+          </div>
+        </div>
+        <div className="fixed top-20 left-0 w-64 h-screen bg-white">
+        <div className="my-10 flex" style={{margin: '1rem', }}>
+          <div className="text-blue-500" style={{marginRight: '0.5rem'}}>+</div>
+            <a href="/add-course" className="text-blue-500 block "> Add Course</a>
+          </div>
+        </div>
+        <div className="" style={{marginLeft: '20rem', marginTop: '8rem'}}>
+          <EnrollmentProvider>
+            {children}
+            </EnrollmentProvider>
+        </div>
+        </main>
       </body>
     </html>
   );
